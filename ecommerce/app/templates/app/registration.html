@@ -1,0 +1,55 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Customer Registration</h3>
+   <hr>
+
+   <form action="{% url 'registration' %}" method="POST" novalidate class="shadow p-5">
+      {% csrf_token %}
+      <div class="mb-3">
+         {% if message %}
+            {% for message in messages %}
+               <p>{{message}}</p>
+            {% endfor %}
+         {% endif %}
+         <label for="first_name" class="form-label">First Name</label>
+         <input type="text" class="form-control" id="firstname" name="first_name">
+         <label for="last_name" class="form-label">Last Name</label>
+         <input type="text" class="form-control" id="lastname" name="last_name">
+      </div>
+      <div class="mb-3">
+     <label for="email" class="form-label">Email</label>
+     <input type="email" class="form-control" id="email" name="email">
+     </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">UserName</label>
+      <input type="username" class="form-control" id="username" name="username">
+      </div>
+    <div class="mb-3">
+     <label for="password" class="form-label">Password</label>
+     <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <div class="mb-3">
+     <label for="password2" class="form-label">Confirm Password</label>
+     <input type="password" class="form-control" id="password2" name="password2">
+    </div>
+    <div class="text-end">
+     <button type="Submit" class="btn btn-danger">Submit</button>
+    </div>
+    <br>
+    <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+       class="text-danger">Login Now</a> </small></div>
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="alert alert-danger my-3">{{error}}</p>
+    {% endfor %}
+    {% endif %}
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

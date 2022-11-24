@@ -1,0 +1,35 @@
+body
+{
+    overflow-x: hidden;
+}
+.owl-carousel .item{
+ font-size: 24px;
+ text-align: center;
+ margin-top: 20px;
+}
+
+.owl-next{
+ float:right;
+}
+.owl-prev{
+ float:left;
+}
+.owl-prev span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.owl-next span{
+ font-size: 24px;
+ font-weight: bold;
+}
+.nav-bar
+{
+    background-color: #171520e6;
+}
+.dropdown-profile
+{
+    margin: 5px -40px;
+}
+.payment{
+    height: 100px;
+}

@@ -1,0 +1,90 @@
+{% extends 'app/vendorBase.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+    {% block bodies %} 
+        <div class="hero">
+            <form action="{% url 'addProduct' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="header">
+                    <h1>Add product</h1>
+
+                    <div class="edit">
+                        <button class="btn inactive">Clear All</button>
+                        <button class="btn active" name="submit">Publish now</button>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="general-info">
+                        <div class="mb-4">
+                            <label for="product_title" class="form-label">Product title</label>
+                            <input type="text" name="title" placeholder="Product Name" class="form-control" id="product_title">
+                        </div>
+                        <div class="row">
+                            <div>
+                                <label for="price" class="form-label">Price</label>
+                                <input type="numeric" name="price" placeholder="Price" class="form-control" id="price">
+                            </div>
+                            <div>
+                                <label for="discount" class="form-label">Discount</label>
+                                <input type="numeric" name="discount" placeholder="Discount" class="form-control" id="discount">
+                            </div>
+                            <div>
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" name="gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="brand" class="form-label">Brand</label>
+                            <input type="text" placeholder="Brand Name" name="brand" class="form-control" id="brand">
+                        </div>
+                    </div>
+                    <div class="description">
+                        <div>
+                            <label class="form-label">Description</label>
+                            <textarea name="description" placeholder="Type here" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <label class="form-label">Product Specifications</label>
+
+                                <textarea name="specification" id="" cols="30" class="form-control" rows="8"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" name="status">
+                                    <option value="1">Published</option>
+                                    <option value="0">Draft</option>
+                                </select>
+                            </div>
+
+                            <hr>
+                            <br>
+                            <h5>Categories</h5>
+                            <div class="form-check">
+                                <select class="form-select" name="category">
+                                    {% for i in category %}
+                                    <option value="{{i.category}}">{{i.category}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="upimg">
+                        <div>
+                            <label class="form-label">Image</label>
+                            <input type="file" id="img" name="image" class="form-control">
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% endblock bodies %}
+
+

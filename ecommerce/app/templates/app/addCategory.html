@@ -1,0 +1,22 @@
+{% extends 'app/vendorBase.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block bodies %} 
+<div style="margin-left: 400px">
+<h3>Available Categories for the products: </h3>
+    <table>
+        <tr> <th>category</th> <th>action</th></tr>
+        {% for i in Categories %}
+        <tr> <td>{{i.category}}</td> <td>action</td></tr>
+        {% endfor %}
+        <form action="" method="post">
+    </table>
+    <form action="{% url 'addCategory' %}" method="POST">
+        {% csrf_token %}
+        <br><input type="text" name="category" id="" placeholder="Add Category"> 
+         <input type="submit" value="Add category" name="submit">
+    </div>
+</form>
+</div>
+{% endblock bodies %} 
